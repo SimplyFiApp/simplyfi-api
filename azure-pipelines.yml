@@ -21,6 +21,9 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - task: UseGitVersion@5
+      inputs:
+        versionSpec: '5.x'
+        targetPath: '/src'
     - task: Docker@2
       displayName: Build an image
       inputs:
