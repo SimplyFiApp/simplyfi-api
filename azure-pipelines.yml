@@ -20,10 +20,11 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - task: UseGitVersion@5
     - task: Docker@2
       displayName: Build an image
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/src/SimplyFi.Api/Dockerfile'
         tags: |
-          $(tag)
+          $(GitVersion.InformationalVersion)
